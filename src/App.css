@@ -1,0 +1,11 @@
+body{
+  margin: 0 auto;
+  padding: 100px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}

@@ -1,0 +1,36 @@
+.fieldset-state {
+  position: relative;
+  border: none;
+  margin: 0;
+}
+
+.fieldset-state button {
+  display: flex;
+  height: 30px;
+  width: 260px;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 18px;
+  border: 2px solid black;
+}
+
+.options-panel {
+  position: absolute;
+  background: white;
+  color: black;
+  padding: 10px;
+  height: 260px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.options-panel fieldset {
+  display: flex;
+  border: none;
+  align-items: center;
+}
+
+.options-panel fieldset.selected {
+  background: blueviolet;
+}
