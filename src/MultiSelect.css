@@ -12,6 +12,7 @@
   padding-left: 10px;
   font-size: 18px;
   border: 2px solid black;
+  justify-content: space-between;
 }
 
 .options-panel {
@@ -33,4 +34,9 @@
 
 .options-panel fieldset.selected {
   background: blueviolet;
+}
+
+.fieldset-state button img {
+  height: 20px;
+  width: 20px;
 }

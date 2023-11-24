@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "../MultiSelect.css";
+import ArrowDown from "../assets/ArrowDown.svg";
+import ArrowRight from "../assets/ArrowRight.svg";
 
 const optionsValues = [
     { label: "1 vai", value: "1" },
@@ -37,39 +39,39 @@ const MultiSelect: React.FC = () => {
     }, []);
 
     const count = Object.values(selected).filter(Boolean).length;
-    const buttonLabel = count === 0 ?  '-- select --' : count + ' selected';
+    const buttonLabel = count === 0 ?  '--- select ---' : count + ' selected';
 
     return (
-        <fieldset className="fieldset-state">
-            <button ref={buttonRef} onClick={() => setDropdownOpen((prev) => !prev)}>
-                {buttonLabel}
-            </button>
-            {dropdownOpen && (
-                <div className="options-panel" onClick={(e) => 
-                  //removendo o evento do pai
-                  e.stopPropagation()
-                }>
-                    {optionsValues.map((object) => 
-                        <fieldset key={object.value} className={selected[object.value] ? `selected`: ""} >
-                            <input
-                                type="checkbox"
-                                checked={selected[object.value]}
-                                onChange={(e) => setSelected({
-                                    ...selected,
-                                    [object.value]: e.target.checked
-                                })}
-                                id={`input-${object.value}`}
-                            />
+      <fieldset className="fieldset-state">
+          <button ref={buttonRef} onClick={() => setDropdownOpen((prev) => !prev)}>
+            {buttonLabel}
+            {dropdownOpen ? <img src={ArrowDown} alt="down" /> : <img src={ArrowRight} alt="down" />}
+          </button>
+          {dropdownOpen && (
+              <div className="options-panel" onClick={(e) => 
+                //removendo o evento do pai
+                e.stopPropagation()
+              }>
+                  {optionsValues.map((object) => 
+                      <fieldset key={object.value} className={selected[object.value] ? `selected`: ""} >
+                          <input
+                              type="checkbox"
+                              checked={selected[object.value]}
+                              onChange={(e) => setSelected({
+                                  ...selected,
+                                  [object.value]: e.target.checked
+                              })}
+                              id={`input-${object.value}`}
+                          />
 
-                            <label htmlFor={`input-${object.value}`} >
-                                {object.label}
-                            </label>
-                        </fieldset>
-                    )}
-                </div>
-            )}
-        </fieldset>
-        
+                          <label htmlFor={`input-${object.value}`} >
+                              {object.label}
+                          </label>
+                      </fieldset>
+                  )}
+              </div>
+          )}
+      </fieldset>
     );
 }
 
